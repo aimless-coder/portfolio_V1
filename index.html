@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="nav-box">
+                <div class="nav">
+                    <div class="logo" id="logo">
+                        <div id="nameLogo">DIPANKAR</div>
+                    </div>
+                    <div class="links">
+                        <ul>
+                            <li>
+                                <a href="https://github.com/aimless-coder" target="_blank">
+                                    Github
+                                    <svg viewBox="0 0 70 36">
+                                        <path d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/dipankarpurkayastha/" target="_blank">
+                                    LinkedIn
+                                    <svg viewBox="0 0 70 36">
+                                        <path d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./images/Profile.pdf" download="Resume.pdf">
+                                    Resume
+                                    <svg viewBox="0 0 70 36">
+                                        <path d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero section" data-nav-color="white">
+            <div class="background" id="canvasContainer">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="content-box">
+                <div class="content">
+                    <p>Hi, I am </p>
+                    <div class="name">
+                        <div id="titleLogo">PURKAYASTHA</div>
+                    </div>
+                    <h3>A Full Stack Developer</h3>
+                    <div class="location">
+                        <img src="./images/location.png" alt="location pin">
+                        <p class="hover-image">India</p>
+                    </div>
+                    <div class="hero-btn-section">
+                        <a href="#projects" class="project-btn btn"><div >My Creations</div></a>
+                        <a href="#contact" class="project-btn btn"><div >Let’s Connect</div></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="waves-section">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.6" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" />
+                </svg>
+            </div>
+        </section>
+
+        <section id='about' class="about section" data-nav-color="black">
+            <div class="about-box">
+                <div class="text">
+                    <h3>Beyond the Screen</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium voluptates nihil veritatis nemo iste accusamus voluptatum cum officia fugit consequuntur ea, quisquam labore minima qui architecto expedita, non iusto earum quasi vel perferendis consectetur exercitationem id quos? Aperiam fuga sapiente aliquid et, provident saepe quasi fugiat ex sed assumenda recusandae enim iure at vitae delectus unde eveniet eaque autem, voluptatum, quaerat molestias asperiores? Voluptatem impedit magni vel, ut aspernatur fuga.</p>
+                </div>
+                <div class="images">
+                    <div class="icons">
+                        <div class="icon-box">
+                            <img src="./images/html.png" alt="html 5">
+                            <img src="./images/css.png" alt="">
+                            <img src="./images/js.png" alt="">
+                            <img src="./images/react.png" alt="">
+                            <img src="./images/nodejs.png" alt="">
+                            <img src="./images/postgresql.png" alt="">
+                            <img src="./images/git.png" alt="">
+                        </div>
+                    </div>
+                    <div class="image-one">
+                        <img src="./images/man_on_computer.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id='projects' class="projects section" data-nav-color="white">
+                <div class="project-box">
+                    <div class="project-container">
+                        <h3>My Creations</h3>
+                        <div class="hover-container">
+                            <div class="hover-item active" >
+                                <div class="number">01</div>
+                                <div class="project-name" data-target="project1">Warmhole Exodus</div>
+                            </div>
+                            <div class="hover-item" > 
+                                <div class="number">02</div>
+                                <div class="project-name" data-target="project2">Warmhole Exodus</div>
+                            </div>
+                            <div class="hover-item" > 
+                                <div class="number">03</div>
+                                <div class="project-name" data-target="project3">Warmhole Exodus</div>
+                            </div>
+                            <div class="hover-item" > 
+                                <div class="number">04</div>
+                                <div class="project-name" data-target="project4">Warmhole Exodus</div>
+                            </div>
+                        </div>
+                        
+                          <div class="reveal-container">
+                            <div id="project1" class="reveal-item active">
+                                <div class="work-name">Wormhole Exodus</div>
+                                <div class="video-container">
+                                    <img src="./images/video.gif" alt="">
+                                </div>
+                                <div class="details">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci at iste magnam! Optio hic, minima omnis id, dolorum atque voluptatum error repudiandae rem iusto cumque, quas inventore pariatur ea perferendis.</p>
+                                </div>
+                                <div class="button-box">
+                                    <div class="btn">Button</div>
+                                    <div class="btn">Button</div>
+                                </div>
+                            </div>
+                            <div id="project2" class="reveal-item">
+                                <div class="work-name">Wormhole Exodus 2</div>
+                                <div class="video-container">
+                                    <img src="./images/video.gif" alt="">
+                                </div>
+                                <div class="details">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci at iste magnam! Optio hic, minima omnis id, dolorum atque voluptatum error repudiandae rem iusto cumque, quas inventore pariatur ea perferendis.</p>
+                                </div>
+                                <div class="button-box">
+                                    <div class="btn">Button</div>
+                                    <div class="btn">Button</div>
+                                </div>
+                            </div>
+                            <div id="project3" class="reveal-item">
+                                <div class="work-name">Wormhole Exodus 3</div>
+                                <div class="video-container">
+                                    <img src="./images/video.gif" alt="">
+                                </div>
+                                <div class="details">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci at iste magnam! Optio hic, minima omnis id, dolorum atque voluptatum error repudiandae rem iusto cumque, quas inventore pariatur ea perferendis.</p>
+                                </div>
+                                <div class="button-box">
+                                    <div class="btn">Button</div>
+                                    <div class="btn">Button</div>
+                                </div>
+                            </div>
+                            <div id="project4" class="reveal-item">
+                                <div class="work-name">Wormhole Exodus 4</div>
+                                <div class="video-container">
+                                    <img src="./images/video.gif" alt="">
+                                </div>
+                                <div class="details">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci at iste magnam! Optio hic, minima omnis id, dolorum atque voluptatum error repudiandae rem iusto cumque, quas inventore pariatur ea perferendis.</p>
+                                </div>
+                                <div class="button-box">
+                                    <div class="btn">Button</div>
+                                    <div class="btn">Button</div>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section" data-nav-color="black">
+
+            <div class="contact-box">
+                <div class="contact-container">
+                    <div class="image-container">
+                        <img src="./images/man_with_letter.png" alt="">
+                    </div>
+                    <div class="form-container">
+                        <div class="form-intro">
+                            <h2>Let’s talk code, ideas, or anything else—hit me up!</h2>
+                        </div>
+                        
+                        <div class="form-box">
+                            <form class="contact-form" action="#" method="POST">
+                              <div class="form-group-container">
+                                <div class="form-group">
+                                  <label for="name" class="form-label"> <div class="label-name">
+                                    Name
+                                  </div></label>
+                                  <input id="name" name="name" class="form-input" type="text" required/>
+                                </div>
+                                <div class="form-group">
+                                  <label for="email" class="form-label"><div class="label-name">
+                                    Email
+                                  </div></label>
+                                  <input id="email" name="email" class="form-input" type="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"/>
+                                </div>
+                                <div class="form-group">
+                                  <label for="message" class="form-label"><div class="label-name">
+                                    Message
+                                  </div></label>
+                                  <textarea class="form-textarea" id="message" name="message" required></textarea>
+                                </div>
+                              </div>
+                              <div class="btn form-submit" role="button" tabindex="0" onclick="sendEmail()" onkeydown="if(event.key === 'Enter') sendEmail()">Submit</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/lodash/lodash.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="getPos.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="./scroll.js"></script>
+
+    <script src="main.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>
