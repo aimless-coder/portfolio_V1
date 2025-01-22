@@ -159,3 +159,244 @@ window.addEventListener('load', () => {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.style.display = 'none';
 });
+
+// Go to top button functionality
+  const goToTopButton = document.getElementById('goToTop');
+  
+  // Show button when user scrolls down 100px
+  window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+          goToTopButton.classList.add('visible');
+      } else {
+          goToTopButton.classList.remove('visible');
+      }
+  });
+  
+  // Smooth scroll to top when button is clicked
+  goToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
+
+
+//Get position for GSAP Animation
+
+const updateTargetPosition = () => {
+  const reference = document.getElementById("titleLogo");
+  const target = document.getElementById("nameLogo");
+  const rect = reference.getBoundingClientRect();
+
+  const refTop = rect.top + window.scrollY - (isMobile ? 45 : 70);
+  const refLeft = rect.left + window.scrollX;
+
+  target.style.top = `${refTop}px`;
+  target.style.left = `${refLeft}px`;
+}
+
+window.addEventListener('load', () => {
+  updateTargetPosition();
+  window.addEventListener('resize', updateTargetPosition);
+  window.addEventListener('scroll', updateTargetPosition);
+});
+
+  
+//GSAP Animation
+
+gsap.registerPlugin(ScrollTrigger);
+
+const parent = document.getElementById('logo');
+const child = document.getElementById('nameLogo');
+
+const calculateOffsets = () => {
+  const parentRect = parent.getBoundingClientRect();
+  const childRect = child.getBoundingClientRect();
+
+  return {
+    offsetX: Math.round(childRect.left - parentRect.left),
+    offsetY: Math.round(childRect.top - parentRect.top + (isMobile ? 5 : 10)),
+  };
+}
+
+let offsetX, offsetY;
+
+const initializeAnimations = () => {
+  ({ offsetX, offsetY } = calculateOffsets());
+
+  if(!isMobile){
+    gsap.to(child, {
+    scrollTrigger: {
+      trigger: '.content',
+      start: 'top 17%',
+      end: 'bottom bottom',
+      scrub: 1,
+      // markers: true,
+      onUpdate: () => {
+        const offsets = calculateOffsets();
+        offsetX = offsets.offsetX;
+        offsetY = offsets.offsetY;
+      },
+    },
+    scale: 1 / 3,
+    x: () => -offsetX,
+    y: () => -offsetY,
+    z: -200,
+    rotationY: 45,
+    ease: 'back.out(1.7)',
+  });
+  }
+
+  ScrollTrigger.matchMedia({
+    "(max-width: 767px)": function() {
+      gsap.to(child, {
+        scrollTrigger: {
+          trigger: '.content',
+          start: 'top 25%', 
+          end: 'bottom bottom',
+          scrub: 1,
+          onUpdate: () => {
+            const offsets = calculateOffsets();
+            offsetX = offsets.offsetX;
+            offsetY = offsets.offsetY;
+          },
+        },
+        scale: 1 / 3,
+        x: () => -offsetX,
+        y: () => -offsetY,
+        z: -200,
+        rotationY: 45,
+        ease: 'back.out(1.7)',
+      });
+    }
+  });
+
+  // GSAP animation for opacity
+  gsap.to('.content', {
+    scrollTrigger: {
+      trigger: '.content',
+      start: 'top 10%',
+      end: 'bottom bottom',
+      scrub: 1,
+    },
+    opacity: 0.4,
+    ease: 'power1.out',
+  });
+}
+
+window.addEventListener('load', () => {
+  initializeAnimations();
+
+  window.addEventListener('resize', () => {
+    const offsets = calculateOffsets();
+    offsetX = offsets.offsetX;
+    offsetY = offsets.offsetY;
+    
+    ScrollTrigger.refresh();
+  });
+});
+
+
+//Changing nav color on background
+const sections = document.querySelectorAll(".section");
+const nav = document.querySelector(".nav");
+
+sections.forEach((section) => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top 12%",
+    end: "bottom 10%",
+    onEnter: () => {
+      updateNavbarColor(section);
+    },
+    onEnterBack: () => {
+      updateNavbarColor(section);
+    },
+  });
+});
+
+const updateNavbarColor = (section) => {
+  const navColor = section.getAttribute("data-nav-color");
+  nav.style.color = navColor;
+}
+
+//Email contact section
+
+window.sendEmail = () => {
+
+  emailjs.init("S_iUIUPyQmhdB1tf3");
+
+      const form = document.querySelector('.contact-form');
+      const name = document.querySelector('#name').value;
+      const email = document.querySelector('#email').value;
+      const message = document.querySelector('#message').value;
+
+      const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+      if (!name || !email || !message) {
+        Toastify({
+          text: "All fields are required.",
+          duration: 3000,
+          newWindow: true,
+          gravity: "bottom",
+          position: "center",
+          stopOnFocus: true,
+          style: {
+            background: "black",
+          },
+        }).showToast();
+        return;
+      }
+    
+      if (!emailRegex.test(email)) {
+        Toastify({
+          text: "Please enter a valid email address.",
+          duration: 3000,
+          newWindow: true,
+          gravity: "bottom",
+          position: "center",
+          stopOnFocus: true,
+          style: {
+            background: "black",
+          },
+        }).showToast();
+        return;
+      }
+
+      emailjs.sendForm(
+        'service_aimlessCoder',
+        'template_submitContactFm',
+        form 
+      ).then(
+        function (response) {
+          Toastify({
+              text: "Email sent successfully!",
+              duration: 3000,
+              newWindow: true,
+              gravity: "bottom",
+              position: "center",
+              stopOnFocus: true,
+              style: {
+                background: "black",
+              },
+            }).showToast();
+          form.reset();
+        },
+        function (error) {
+          Toastify({
+              text: "Failed to send email. Please try again later.",
+              duration: 3000,
+              newWindow: true,
+              gravity: "bottom",
+              position: "center",
+              stopOnFocus: true,
+              style: {
+                background: "red",
+              },
+            }).showToast();
+          form.reset();
+        }
+      );
+    }
+    
+

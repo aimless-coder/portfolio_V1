@@ -2,7 +2,7 @@ const Particles = {
     setup() {
  
       const canvas = document.getElementById("canvas");
-      canvas.width = window.innerWidth * 0.988;
+      canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       this.canvas = canvas;
       document.body.appendChild(canvas);
@@ -229,7 +229,7 @@ const Particles = {
   
   // RESIZE EVENT HANDLER
   const handleResize = () => {
-    Particles.canvas.width = window.innerWidth* 0.988;
+    Particles.canvas.width = window.innerWidth;
     Particles.canvas.height = window.innerHeight;
     Particles.width = Particles.canvas.width;
     Particles.height = Particles.canvas.height;
@@ -243,23 +243,5 @@ const Particles = {
   
   Particles.start();
   
-  // Go to top button functionality
-  const goToTopButton = document.getElementById('goToTop');
-  
-  // Show button when user scrolls down 100px
-  window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-          goToTopButton.classList.add('visible');
-      } else {
-          goToTopButton.classList.remove('visible');
-      }
-  });
-  
-  // Smooth scroll to top when button is clicked
-  goToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-      });
-  });
+
   

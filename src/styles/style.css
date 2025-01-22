@@ -982,6 +982,15 @@ a{
     .button-box{
         justify-content: center;
     }
+
+    .skill{
+      font-size: 12px;
+      padding: 5px;
+    }
+
+    .loadingScreen{
+      font-size:24px;
+    }
   }
 
 .loading-screen {
