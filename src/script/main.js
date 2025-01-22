@@ -1,7 +1,6 @@
 const hoverItems = document.querySelectorAll('.project-name');
 const revealItems = document.querySelectorAll('.reveal-item');
 const arrowItems = document.querySelectorAll('.arrow');
-
 const skillItems = document.querySelectorAll('.skill');
 
 const isMobile = () => window.innerWidth <= 767;
@@ -163,7 +162,6 @@ window.addEventListener('load', () => {
 // Go to top button functionality
   const goToTopButton = document.getElementById('goToTop');
   
-  // Show button when user scrolls down 100px
   window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
           goToTopButton.classList.add('visible');
@@ -172,7 +170,6 @@ window.addEventListener('load', () => {
       }
   });
   
-  // Smooth scroll to top when button is clicked
   goToTopButton.addEventListener('click', () => {
       window.scrollTo({
           top: 0,
@@ -188,7 +185,7 @@ const updateTargetPosition = () => {
   const target = document.getElementById("nameLogo");
   const rect = reference.getBoundingClientRect();
 
-  const refTop = rect.top + window.scrollY - (isMobile ? 45 : 70);
+  const refTop = rect.top + window.scrollY - (isMobile() ? 50 : 70);
   const refLeft = rect.left + window.scrollX;
 
   target.style.top = `${refTop}px`;
@@ -215,7 +212,7 @@ const calculateOffsets = () => {
 
   return {
     offsetX: Math.round(childRect.left - parentRect.left),
-    offsetY: Math.round(childRect.top - parentRect.top + (isMobile ? 5 : 10)),
+    offsetY: Math.round(childRect.top - parentRect.top + (isMobile() ? 5 : 10)),
   };
 }
 
@@ -224,8 +221,7 @@ let offsetX, offsetY;
 const initializeAnimations = () => {
   ({ offsetX, offsetY } = calculateOffsets());
 
-  if(!isMobile){
-    gsap.to(child, {
+    if(!isMobile()){gsap.to(child, {
     scrollTrigger: {
       trigger: '.content',
       start: 'top 17%',
@@ -244,8 +240,8 @@ const initializeAnimations = () => {
     z: -200,
     rotationY: 45,
     ease: 'back.out(1.7)',
-  });
-  }
+  });}
+  
 
   ScrollTrigger.matchMedia({
     "(max-width: 767px)": function() {
@@ -272,7 +268,7 @@ const initializeAnimations = () => {
   });
 
   // GSAP animation for opacity
-  gsap.to('.content', {
+if(!isMobile()){gsap.to('.content', {
     scrollTrigger: {
       trigger: '.content',
       start: 'top 10%',
@@ -281,7 +277,23 @@ const initializeAnimations = () => {
     },
     opacity: 0.4,
     ease: 'power1.out',
-  });
+  });}
+
+
+ScrollTrigger.matchMedia({
+  "(max-width: 767px)": function() {
+    gsap.to('.content', {
+      scrollTrigger: {
+        trigger: '.content',
+        start: 'top 25%',
+        end: 'bottom bottom',
+        scrub: 1,
+      },
+      opacity: 0.4,
+      ease: 'power1.out',
+    });
+  }
+});
 }
 
 window.addEventListener('load', () => {
