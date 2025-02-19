@@ -137,7 +137,8 @@ skillItems.forEach((text) =>{
   }
 })
 
-window.addEventListener('resize', () => {
+const handleResize = () => {
+
   const mobileReveals = document.querySelectorAll('.mobile-reveal');
   if (!isMobile()) {
     mobileReveals.forEach(reveal => reveal.remove());
@@ -146,7 +147,17 @@ window.addEventListener('resize', () => {
     });
     activateRevealItem('project1');
   }
-});
+
+  updateTargetPosition();
+
+  const offsets = calculateOffsets();
+  offsetX = offsets.offsetX;
+  offsetY = offsets.offsetY;
+  ScrollTrigger.refresh();
+};
+
+
+window.addEventListener('resize', handleResize);
 
 window.addEventListener('DOMContentLoaded', () => {
   if (!isMobile()) {
@@ -194,7 +205,6 @@ const updateTargetPosition = () => {
 
 window.addEventListener('load', () => {
   updateTargetPosition();
-  window.addEventListener('resize', updateTargetPosition);
   window.addEventListener('scroll', updateTargetPosition);
 });
 
@@ -298,14 +308,6 @@ ScrollTrigger.matchMedia({
 
 window.addEventListener('load', () => {
   initializeAnimations();
-
-  window.addEventListener('resize', () => {
-    const offsets = calculateOffsets();
-    offsetX = offsets.offsetX;
-    offsetY = offsets.offsetY;
-    
-    ScrollTrigger.refresh();
-  });
 });
 
 
